@@ -95,12 +95,13 @@
 - ![1](https://user-images.githubusercontent.com/106258306/195997070-c2aa793d-105d-471f-a2ee-a21e739d1d16.png)
 ![2](https://user-images.githubusercontent.com/106258306/195997078-d10624a3-5769-4f76-8a1b-cfaa19076504.png)
 
-```c#
+'''c#
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
-using SimpleJSON;```
+using SimpleJSON;
+```
  
 - Подключим необходимые библиотеки , такие как:
 	-UnityEngine
