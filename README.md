@@ -38,9 +38,9 @@
 - Написать функционал на Unity, в котором будет воспризводиться аудио-файл в зависимости от значения данных из таблицы.
 ## Ход работы:
 - Зайдём в Google console cloud и создадим новый проект. Для этого нажмём на кнопку справа от надписи Google Cloud – New Project
-=====
+
 ![7](https://user-images.githubusercontent.com/106258306/195996980-c477e12d-0d81-4b88-9730-758b30508999.png)
-=====
+
 - Зайдём в созданный проект и перейдём в Marketplace. Для этого нажмём на меню, слева от названия Google Cloud.
 
 ![8](https://user-images.githubusercontent.com/106258306/195996996-e47d7002-e972-4f28-8409-7e6b5f3dccd4.png)
@@ -182,6 +182,40 @@ void Update()
 
 - Создадим воспроизведение звуковых эффектов. Для этого создадим методы, которые будут вызываться во время вывода элементов в консоль. В Unity уберём авто воспроизведение(Play on awake) и подключим звуковые файлы, которые мы установили ранее.
 
+```c#
+IEnumerator PlayerSelectAudioGood()
+    {
+        statusStart = true;
+        selectAudio = GetComponent<AudioSource>();
+        selectAudio.clip = goodSpeak;
+        selectAudio.Play();
+        yield return new WaitForSeconds(3);
+        statusStart = false;
+        i++;
+    }
+
+    IEnumerator PlayerSelectAudioNormal()
+    {
+        statusStart = true;
+        selectAudio = GetComponent<AudioSource>();
+        selectAudio.clip = normalSpeak;
+        selectAudio.Play();
+        yield return new WaitForSeconds(3);
+        statusStart = false;
+        i++;
+    }
+
+    IEnumerator PlayerSelectAudioBad()
+    {
+        statusStart = true;
+        selectAudio = GetComponent<AudioSource>();
+        selectAudio.clip = badSpeak;
+        selectAudio.Play();
+        yield return new WaitForSeconds(4);
+        statusStart = false;
+        i++;
+    }
+```
 ![5](https://user-images.githubusercontent.com/106258306/195997089-36f22778-74a1-416b-9699-47b27b593924.png)
 ![6](https://user-images.githubusercontent.com/106258306/195997098-fe6239b6-a12a-4116-ac3c-27cd153ba53b.png)
 
