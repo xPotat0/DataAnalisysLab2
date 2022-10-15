@@ -68,7 +68,6 @@
 
 - Теперь перейдём в файл Python. Установим для него библиотеки Numpy и gspread(File - Settings – Python Interpreter). Далее напишем код для случайной генерации чисел и сохранении этих чисел в файле таблицы, которую мы создали на предыдущих шагах.
 
-![15](https://user-images.githubusercontent.com/106258306/195997043-f707bfb9-de4e-4164-a59f-8efead5a0cd7.png)
 ```python
 import gspread
 import numpy as np
