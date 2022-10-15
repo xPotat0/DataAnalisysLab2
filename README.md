@@ -155,10 +155,32 @@ public class NewBehaviourScript : MonoBehaviour
 - ![3](https://user-images.githubusercontent.com/106258306/195997085-3dfda920-2f04-47a0-8b2f-a7d92152ffae.png)
 
 
--Уберём вывод первого элемента в консоль. Реализуем вывод элементов GoogleSheets в функции Update.
+- Уберём вывод первого элемента в консоль. Реализуем вывод элементов GoogleSheets в функции Update.
 
 - ![4](https://user-images.githubusercontent.com/106258306/195997087-53124eda-2543-44a0-990c-b6fc6442e72d.png)
 
+```c#
+void Update()
+    {
+        if(dataSet["Mon_" + i.ToString()] <= 10 & statusStart == false & i != dataSet.Count)
+        {
+            StartCoroutine(PlayerSelectAudioGood());
+            Debug.Log(dataSet["Mon_" + i.ToString()]);
+        }
+
+        if(dataSet["Mon_" + i.ToString()] > 10 & dataSet["Mon_" + i.ToString()] < 100 & statusStart == false & i != dataSet.Count)
+        {
+            StartCoroutine(PlayerSelectAudioNormal());
+            Debug.Log(dataSet["Mon_" + i.ToString()]);
+        }
+
+        if(dataSet["Mon_" + i.ToString()] >= 100 & statusStart == false & i != dataSet.Count)
+        {
+            StartCoroutine(PlayerSelectAudioBad());
+            Debug.Log(dataSet["Mon_" + i.ToString()]);
+        }
+    }
+ ```
 
 -Создадим воспроизведение звуковых эффектов. Для этого создадим методы, которые будут вызываться во время вывода элементов в консоль. В Unity уберём авто воспроизведение(Play on awake) и подключим звуковые файлы, которые мы установили ранее.
 
@@ -166,7 +188,7 @@ public class NewBehaviourScript : MonoBehaviour
 ![6](https://user-images.githubusercontent.com/106258306/195997098-fe6239b6-a12a-4116-ac3c-27cd153ba53b.png)
 
 
--Запустим программу в Unity. Теперь будет выводиться звук в зависимости от того, какое число мы передали в словарь из GoogleSheets
+- Запустим программу в Unity. Теперь будет выводиться звук в зависимости от того, какое число мы передали в словарь из GoogleSheets
 
 Вывод: Я научился использовать API из google console для работы с GoogleSheets и работать в связке Python - Google Sheets - Unity.
 Весь код, использованный в отчёте можно найти в репозитории, вместе с отчётом.
