@@ -101,6 +101,41 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using SimpleJSON;
+
+public class NewBehaviourScript : MonoBehaviour
+{
+    public AudioClip goodSpeak;
+    public AudioClip normalSpeak;
+    public AudioClip badSpeak;
+    private AudioSource selectAudio;
+    private Dictionary<string,float> dataSet = new Dictionary<string, float>();
+    private bool statusStart = false;
+    private int i = 1;
+
+    void Start()
+    {
+        StartCoroutine(GoogleSheets());
+    }
+
+    void Update()
+    {
+
+    }
+
+    IEnumerator GoogleSheets()
+    {
+        UnityWebRequest currentResp = UnityWebRequest.Get("https://sheets.googleapis.com/v4/spreadsheets/1fFvxyTIB-vN5k29u4QPb3kRnW0ApnT392QfKIxw5WNo/values/Лист1?key=AIzaSyBTVNBSLOmqUTxwlewqFuk2hqwX-dgBo4A");
+        yield return currentResp.SendWebRequest();
+        string rawResp = currentResp.downloadHandler.text;
+        var rawJson = JSON.Parse(rawResp);
+        foreach (var itemRawJson in rawJson["values"])
+        {
+            var parseJson = JSON.Parse(itemRawJson.ToString());
+            var selectRow = parseJson[0].AsStringList;
+            dataSet.Add(("Mon_" + selectRow[0]), float.Parse(selectRow[2]));
+        }
+    }
+}
 ```
  
 - Подключим необходимые библиотеки , такие как:
