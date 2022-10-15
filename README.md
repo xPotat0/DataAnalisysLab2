@@ -133,6 +133,7 @@ public class NewBehaviourScript : MonoBehaviour
             var selectRow = parseJson[0].AsStringList;
             dataSet.Add(("Mon_" + selectRow[0]), float.Parse(selectRow[2]));
         }
+	Debug.Log(dataSet["Mon_1"]);
     }
 }
 ```
