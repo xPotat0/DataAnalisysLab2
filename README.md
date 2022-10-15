@@ -56,20 +56,40 @@
 После этого также найдём “Google Sheets Api” и установим его. Далее зайдём в “APIs & Services” , перейдём во вкладку Credentials и создадим Service account(+ Create Credentials). Зададим имя новому аккаунту. После этого он появится ниже, в категории Service Account. Нажмём на него. Перейдём в категорию Keys и создадим новый JSON ключ(ADD KEY – Create Key – JSON). Будет предложено сохранить файл-ключ. Сохраните его в папке с новый файлом Python, с которым мы скоро начнём работу.
   
 ![11](https://user-images.githubusercontent.com/106258306/195997015-ec205a71-fd4e-42bb-8c57-b4162c2364cd.png)
+![12](https://user-images.githubusercontent.com/106258306/195997016-82a140f3-d886-4a5c-8614-95134262b681.png)
 
 Перейдём в категорию Details и скопируем Email. Далее зайдём на стартовую страницу и откроем Таблицы. Создадим новый файл.
 
-![12](https://user-images.githubusercontent.com/106258306/195997016-82a140f3-d886-4a5c-8614-95134262b681.png)
+![13](https://user-images.githubusercontent.com/106258306/195997021-26909a9f-07ef-4377-a4ee-3135d1cd8143.png)
 
 - Нажмём кнопку Настройки доступа справа вверху и введём скопированный адрес Email(Для этого также придётся назвать свою таблицу, например UnitySheets). После этого выберем для него роль “Редактор”
 
-![13](https://user-images.githubusercontent.com/106258306/195997021-26909a9f-07ef-4377-a4ee-3135d1cd8143.png)
+![14](https://user-images.githubusercontent.com/106258306/195997027-b93258a9-7db0-4c69-9531-52ff4fd0151d.png)
 
 - Теперь перейдём в файл Python. Установим для него библиотеки Numpy и gspread(File - Settings – Python Interpreter). Далее напишем код для случайной генерации чисел и сохранении этих чисел в файле таблицы, которую мы создали на предыдущих шагах.
 
-![14](https://user-images.githubusercontent.com/106258306/195997027-b93258a9-7db0-4c69-9531-52ff4fd0151d.png)
 ![15](https://user-images.githubusercontent.com/106258306/195997043-f707bfb9-de4e-4164-a59f-8efead5a0cd7.png)
-
+```python
+import gspread
+import numpy as np
+gc = gspread.service_account(filename="unitydataanalisys-05a7991b08c6.json")
+sh = gc.open("UnitySheets")
+price = np.random.randint(2000, 10000, 11)
+mon = list(range(1,11))
+i = 0
+while i <= len(mon):
+    i += 1
+    if i == 0:
+        continue
+    else:
+        tempInf = ((price[i-1]-price[i-2])/price[i-2])*100
+        tempInf = str(tempInf)
+        tempInf = tempInf.replace('.', ',')
+        sh.sheet1.update(('A' + str(i)), str(i))
+        sh.sheet1.update(('B' + str(i)), str(price[i-1]))
+        sh.sheet1.update(('C' + str(i)), str(tempInf))
+        print(tempInf)
+```
 
 - Имя файла service_account равно названию файла-ключа, который мы предварительно скачали в ту же папку, что и файл Python.
 - Название gc.open(“…”) равно вашему названию таблицы.
