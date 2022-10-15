@@ -216,7 +216,6 @@ IEnumerator PlayerSelectAudioGood()
         i++;
     }
 ```
-![5](https://user-images.githubusercontent.com/106258306/195997089-36f22778-74a1-416b-9699-47b27b593924.png)
 ![6](https://user-images.githubusercontent.com/106258306/195997098-fe6239b6-a12a-4116-ac3c-27cd153ba53b.png)
 
 
