@@ -93,7 +93,6 @@
 - Создадим новый пустой объект и добавим в него компонент звуковой компонент(Add component – Audio Source). После этого создадим новый скрипт в импортированной папке Scripts и назовём его New Behaviour. Присоединим его к новому объекту перетягиванием скрипта на объект в меню, слева от сцены. Откроем скрипт и редактируем его
 
 - ![1](https://user-images.githubusercontent.com/106258306/195997070-c2aa793d-105d-471f-a2ee-a21e739d1d16.png)
-![2](https://user-images.githubusercontent.com/106258306/195997078-d10624a3-5769-4f76-8a1b-cfaa19076504.png)
 
 ```c#
 using System.Collections;
